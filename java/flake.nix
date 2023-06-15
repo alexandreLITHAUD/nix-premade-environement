@@ -18,8 +18,31 @@
           devShells = {
             default = pkgs.mkShell {
               buildInputs = with pkgs; [
-                jdk17
                 eclipses.eclipse-java
+              ];
+            };
+            java8 = pkgs.mkShell {
+              buildInputs = with pkgs; [
+                (eclipses.eclipse-platform {
+                  name = "eclipse-java8";
+                  jdk = jdk8;
+                })
+              ];
+            };
+            java11 = pkgs.mkShell {
+              buildInputs = with pkgs; [
+                (eclipses.eclipse-platform {
+                  name = "eclipse-java11";
+                  jdk = jdk11;
+                })
+              ];
+            };
+            java17 = pkgs.mkShell {
+              buildInputs = with pkgs; [
+                (eclipses.eclipse-platform {
+                  name = "eclipse-java17";
+                  jdk = jdk17;
+                })
               ];
             };
           };
