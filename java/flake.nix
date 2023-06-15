@@ -23,10 +23,7 @@
             };
             java8 = pkgs.mkShell {
               buildInputs = with pkgs; [
-                (eclipses.eclipse-platform {
-                  name = "eclipse-java8";
-                  jdk = jdk8;
-                })
+                (eclipses.eclipse-java.overrideAttrs (oldAttrs: { jdk = jdk8; }))
               ];
             };
             java11 = pkgs.mkShell {
