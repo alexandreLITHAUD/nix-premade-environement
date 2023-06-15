@@ -1,18 +1,20 @@
 {
-    description = "Main flake for each developpement environnement";
+  description = "Main flake for each developpement environnement";
 
-    inputs = 
+  inputs =
     {
-        flake-utils.url = "github:numtide/flake-utils";
-        javadev.url = "./java";
+      flake-utils.url = "github:numtide/flake-utils";
+      javadev.url = "./java";
+      pascaldev.url = "./pascal";
     };
 
-    outputs = { self, flake-utils, javadev}:
-        flake-utils.lib.eachDefaultSystem
-        (system: {
+  outputs = { self, flake-utils, javadev, pascaldev }:
+    flake-utils.lib.eachDefaultSystem
+      (system: {
         devShells = {
-            java = javadev.devShells.${system}.default;
+          java = javadev.devShells.${system}.default;
+          pascal = pascaldev.devShells.${system}.default;
         };
-    });  
+      });
 
 }

@@ -1,5 +1,5 @@
 {
-  description = "Initialisation flake for java and eclipse";
+  description = "Initialisation flake for pascal";
 
   inputs =
     {
@@ -18,8 +18,9 @@
           devShells = {
             default = pkgs.mkShell {
               buildInputs = with pkgs; [
-                jdk17
-                eclipses.eclipse-java
+                lazarus
+                fpc
+                gdb
               ];
             };
           };
